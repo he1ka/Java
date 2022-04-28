@@ -16,6 +16,8 @@ public class Main {
 
         int[] arr5 = {10, 3, 3, 5, -9};
         int[] revertedArray = reverseOrder(arr5);
+
+        revertedArray = reverseOrderWithoutExtrqArray(arr5);
     }
 
     /**
@@ -90,5 +92,25 @@ public class Main {
         }
 
         return result;
+    }
+
+    /**
+     * Implement a method that makes a given array in reverse order. It’s look like previous
+     * but you should solve it without new array
+     * {10, 3, 3, 5, -9} -> {-9, 5, 3, 3, 10}
+     */
+    public static int[] reverseOrderWithoutExtrqArray(int[] input) {
+        int maxArrayIndex = input.length - 1;
+        int reverseIndex;
+
+        for (int index = 0; index < input.length / 2; index++) {
+            reverseIndex = maxArrayIndex - index;
+
+            int tmpValue = input[index];
+            input[index] = input[reverseIndex];
+            input[reverseIndex] = tmpValue;
+        }
+
+        return input;
     }
 }
