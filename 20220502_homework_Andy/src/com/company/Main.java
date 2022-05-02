@@ -127,7 +127,7 @@ public class Main {
     }
 
     /**
-     * Task 4: Given arrays String[]. Implement the method that returns the shortest String from it.
+     * Task 5: Given arrays String[]. Implement the method that returns the shortest String from it.
      */
     public static String getShortestString(String[] inputStrings) {
         int index = 0;
