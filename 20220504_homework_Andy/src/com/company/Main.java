@@ -37,6 +37,21 @@ public class Main {
 
         //Task 9
         System.out.println(findFirstCharIndex("Hello, JavaScript!", 'o'));
+
+        //Task 10
+        System.out.println(findLastCharIndex("let’s talk about java", 't'));
+
+        //Task 11
+        System.out.println(commonPrefixOfStrings("Helo 1234567890", "Hello Java"));
+
+        //Task 12
+        System.out.println(commonPostfixOfStrings("Hello 123", "Hello Java 123"));
+
+        //Task 13
+        printsGivenString("Hello");
+
+        //Task 14
+        System.out.println(substring("let’s talk about java", 7, 20));
     }
 
     /**
@@ -68,7 +83,7 @@ public class Main {
      * реализовать метод печати результата.
      */
     public static boolean isDivisible(int number1, int number2) {
-        if (number1 % number2 == 0) {
+        if (number2 != 0 && number1 % number2 == 0) {
             return true;
         } else {
             return false;
@@ -190,5 +205,95 @@ public class Main {
         return -1;
     }
 
+    /**
+     * Task10: Реализовать метод, который int findLastCharIndex(String str, char ch) который возвращает
+     * позицию последнего вхождения (индекс) символа ch в строке str. Если символа в строке
+     * нет, возвращаем -1.
+     * Например: find(“let’s talk about java”,’t’) -> 15
+     */
+    public static int findLastCharIndex(String str, char ch) {
+        for (int i = str.length() - 1; i >= 0; i--) {
+            char c = str.charAt(i);
 
+            if (ch == c) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * Task11: Реализовать метод, который возвращает длину общего префикса двух строк, т.е. сколько
+     * символов начиная с начала одинаковые у обеих строк.
+     */
+    public static int commonPrefixOfStrings(String str1, String str2) {
+        int strLength1 = str1.length();
+        int strLength2 = str2.length();
+
+        int minLength = strLength1 < strLength2 ? strLength1 : strLength2;
+
+        for (int i = 0; i < minLength; i++) {
+            char c1 = str1.charAt(i);
+            char c2 = str2.charAt(i);
+
+            if (c1 != c2) {
+                return i;
+            }
+        }
+
+        return minLength;
+    }
+
+    /**
+     * Task12: Реализовать метод, который возвращает длину общего постфикса двух строк, т.е. сколько
+     * символов начиная с конца одинаковые у обеих строк.
+     */
+    public static int commonPostfixOfStrings(String str1, String str2) {
+        int strLength1 = str1.length();
+        int strLength2 = str2.length();
+
+        int minLength = strLength1 < strLength2 ? strLength1 : strLength2;
+
+        for (int i = 0; i < minLength; i++) {
+            char c1 = str1.charAt(strLength1 - 1 - i);
+            char c2 = str2.charAt(strLength2 - 1 - i);
+
+            if (c1 != c2) {
+                return i;
+            }
+        }
+
+        return minLength;
+    }
+
+    /**
+     * Task13: Реализовать метод, который печатает заданную строку, при этом каждый символ печатается
+     * в [] Например: “Hello” -> [H][e][l][l][o]
+     */
+
+    public static void printsGivenString(String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            System.out.print("[" + c + "]");
+
+        }
+        System.out.println();
+    }
+
+    /**
+     * Task14: Реализовать метод, который возвращает часть заданной строки, начиная с позиции start,
+     * заканчивая позицией finish. (разбирали в классе, но можно реализовать самостоятельно).
+     * Например: substring(“let’s talk about java”, 7,20) -> “talk about ja”
+     */
+    public static String substring(String str, int start, int finish) {
+        String returnStr = "";
+
+        for (int i = start - 1; i < finish - 1; i++) {
+            returnStr = returnStr + str.charAt(i);
+        }
+
+        return returnStr;
+    }
 }
