@@ -52,6 +52,17 @@ public class Main {
 
         //Task 14
         System.out.println(substring("let’s talk about java", 7, 20));
+
+        //Task 15
+        System.out.println(makeBankAccountSecret("DE5128279087265"));
+
+        //Task 16
+        int[] arr1 = {1, 3, 6, 1, 4, 5, 9};
+        System.out.println(returnMinValue(arr1));
+
+        //Task 17
+        int[] arr2 = {1, 3, 6, -1, 4, -3, 1};
+        System.out.println(indexMinValue(arr2));
     }
 
     /**
@@ -295,5 +306,60 @@ public class Main {
         }
 
         return returnStr;
+    }
+
+    /**
+     * Task15: Представьте, что вы пишите банковскую программу. Вам нужно реализовать метод,
+     * который вместо заданной строки с номером счета (например ”DE5128279087265”)
+     * возвращает строку вида ”DE51*********65” (количество звездочек соответствует количеству
+     * засекреченных цифр)
+     */
+    public static String makeBankAccountSecret(String accountNumber) {
+        String returnStr = "";
+
+        for (int i = 0; i < accountNumber.length(); i++) {
+            if (i >= 4 && i < accountNumber.length() - 2) {
+                returnStr = returnStr + '*';
+            } else {
+                returnStr = returnStr + accountNumber.charAt(i);
+            }
+        }
+
+        return returnStr;
+    }
+
+    /**
+     * Task16: Дан массив целых чисел. Реализовать метод, который возвращает минимальное значение
+     * в данном массиве.
+     * Например: {1,3,6,-1,4,-5,9} -> -5
+     */
+    public static int returnMinValue(int[] arr) {
+//        int minValue = arr[0];
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] < minValue) {
+//                minValue = arr[i];
+//            }
+//        }
+//
+//        return minValue;
+        return arr[indexMinValue(arr)];
+    }
+
+    /**
+     * Task17: Дан массив целых чисел. Реализовать метод, который возвращает индекс минимальнго
+     * значение в данном массиве.
+     * Например: {1,3,6,-1,4,-3,1} -> 5
+     */
+    public static int indexMinValue(int[] arr) {
+        int indexMinValue = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < arr[indexMinValue]) {
+                indexMinValue = i;
+            }
+        }
+
+        return indexMinValue;
     }
 }
