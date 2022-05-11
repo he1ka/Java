@@ -63,6 +63,19 @@ public class Main {
         //Task 17
         int[] arr2 = {1, 3, 6, -1, 4, -3, 1};
         System.out.println(indexMinValue(arr2));
+
+        //Task 18
+        int[] arr3 = {1, 3, 6, -1, 4, -3, 1};
+        System.out.println(sumOfPositiveElements(arr3));
+
+        //Task 19
+        printArray(returnOfEvenNumbers(8, 21));
+
+        //Task 20
+        char[] arr4 = {'a', 'b', 'c', 'd'};
+        char[] arr5 = {'d', 'b', 'c', 'f'};
+
+        compareArrays(arr4, arr5);
     }
 
     /**
@@ -181,7 +194,6 @@ public class Main {
                 System.out.println(i);
             }
         }
-
     }
 
     /**
@@ -191,11 +203,12 @@ public class Main {
      */
     public static int sumOfAllNumbers(int start, int finish) {
         int sum = 0;
+
         for (int i = start; i <= finish; i++) {
             sum = sum + i;
         }
-        return sum;
 
+        return sum;
     }
 
     /**
@@ -361,5 +374,67 @@ public class Main {
         }
 
         return indexMinValue;
+    }
+
+    /**
+     * Task18: Дан массив целых чисел. Реализовать метод, который возвращает сумму всех
+     * положительных элементов данного массива
+     * Например: {1,3,6,-1,4,-3,1} -> 15
+     */
+    public static int sumOfPositiveElements(int[] arr) {
+        int totalSum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                totalSum = totalSum + arr[i];
+            }
+        }
+
+        return totalSum;
+    }
+
+    /**
+     * Task19: Реализовать метод, который возвращает массив из первых n четных чисел, начиная с
+     * заданного числа start
+     * Например, для заданных n=4, start=21: {22,24,26,28,4}
+     */
+    public static int[] returnOfEvenNumbers(int n, int start) {
+        int[] result = new int[n];
+        int foundNumber = 0;
+
+        int i = start;
+
+        while (foundNumber < n) {
+            if (i % 2 == 0) {
+                result[foundNumber] = i;
+                foundNumber++;
+            }
+            i++;
+        }
+
+        return result;
+    }
+
+    /**
+     * Task20: Дано два массива char одинаковой длинны. Написать метод, который выводит все символы,
+     * которые совпадают и имеют одинаковые индексы и в первом и во втором массиве.
+     * Например: {‘a’,’b’,’c’,’d’}, {‘d’,’b’,’c’,’f’} ->bc
+     */
+    public static void compareArrays(char[] arr1, char[] arr2) {
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] == arr2[i]) {
+                System.out.print(arr1[i]);
+            }
+        }
+
+        System.out.println();
+    }
+
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+
+        System.out.println();
     }
 }
