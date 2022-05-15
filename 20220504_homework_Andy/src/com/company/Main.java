@@ -76,6 +76,19 @@ public class Main {
         char[] arr5 = {'d', 'b', 'c', 'f'};
 
         compareArrays(arr4, arr5);
+
+        //Task 21
+        int[] arr6 = {10, 14, 1, 4, 3};
+        int[] arr7 = {0, 1, 6, 10, 1, 4, 13};
+
+        System.out.println(numOfEqualsElementsInArrays(arr6, arr7));
+
+        //Task 22
+        int[] arr8 = {1, 3, 7};
+        System.out.println(combineIntoLong(arr8));
+
+        //Task 23
+        printArray(extractLongToArray(13457));
     }
 
     /**
@@ -190,7 +203,7 @@ public class Main {
      */
     public static void printFromZeroToHundred() {
         for (int i = 0; i <= 100; i++) {
-            if (i % 4 == 0) {
+            if (i % 4 != 0) {
                 System.out.println(i);
             }
         }
@@ -428,6 +441,66 @@ public class Main {
         }
 
         System.out.println();
+    }
+
+    /**
+     * Task21: *Дано два массива int. Написать метод, который считает, сколько значений из первого
+     * массива присутствуют во втором. Например: {10, 14,1,4,3}, {0,1, 6,10, 1,4,13} ->3
+     */
+    public static int numOfEqualsElementsInArrays(int[] array1, int[] array2) {
+        int equalElements = 0;
+
+        for (int i = 0; i < array1.length; i++) {
+            for (int j = 0; j < array2.length; j++) {
+                if (array1[i] == array2[j]) {
+                    equalElements++;
+                    break;
+                }
+            }
+        }
+
+        return equalElements;
+    }
+
+    /**
+     * Task22: *Допустим, дан массив int, каждое значение в котором лежит в диапазоне от 0 до 9.
+     * Реализовать метод, который вернет число long, которое поразрядно состоит из элементов
+     * заданного массива
+     * Например: {1,3,7} -> 137
+     */
+    public static long combineIntoLong(int[] array1) {
+        long combinedLong = 0;
+
+        for (int i = 0; i < array1.length; i++) {
+            // цифры с конца массива - умножаем на 10^i, 7 * 10^0, 3 * 10^1 ...
+            combinedLong += array1[array1.length - 1 - i] * Math.pow(10, i);
+        }
+
+        return combinedLong;
+    }
+
+    /**
+     * Task23: *Задача обратная предыдущему пункту. Допустим, дано число long реализовать метод,
+     * который вернет массив int состоящий из разрядов этого числа.
+     * Например: 137 -> {1,3,7}
+     */
+    public static int[] extractLongToArray(long num) {
+        // Считаем количество цифр в числе, переводим число в строку и получаем длину строки
+        int numberCount = String.valueOf(num).length();
+        // Создаем массив для возврата равный количеству цифр
+        int[] result = new int[numberCount];
+
+        for (int i = 0; i < numberCount; i++) {
+            // Получаем значение разряда в единичной, десятичной, сотой позиции
+            // Это остаток от деления числа на 10 в степени равной позиции
+            // 10^1 - для первой, 10^2 для второго (десятки) ...
+            int singleNum = (int) (num % Math.pow(10, i + 1));
+
+            // Сохраняем в возвращаемый массив в обратном порядке, и вместо 300, записываем 3 (делим на 100)
+            result[numberCount - 1 - i] = singleNum / (int) Math.pow(10, i);
+        }
+
+        return result;
     }
 
     public static void printArray(int[] arr) {
