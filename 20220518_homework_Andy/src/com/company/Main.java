@@ -40,9 +40,6 @@ public class Main {
      * Task 3 Implement the method that takes a two-dimensional array and return the single-dimensional
      * array with all elements of the given array
      * ({ {1,2},{3,4},{5,6} }) -> {1,2,3,4,5,6}
-     * <p>
-     * Реализуйте метод, который принимает двумерный массив и возвращает одномерный массив со всеми
-     * элементами данного массива. ({{1,2},{3,4},{5,6}}) -> {1,2,3,4,5,6}
      */
     public static int[] flatArray(int[][] inputArray) {
         // считаем общее количество элементнов в 2х мерном массиве
