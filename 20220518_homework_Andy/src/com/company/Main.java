@@ -6,10 +6,12 @@ public class Main {
         int[][] arr = {
                 {1, 2, 3, 2},
                 {2, -4, -6, 30, 57},
-                {9, 8, -300}
+                {9, 8, -300},
+                {0, 1},
         };
 
         System.out.println(checkIfAverageMoreZero(arr, 1));
+        System.out.println(checkIfAverageMoreZero(arr, 3));
 
         printArray(flatArray(arr));
     }
@@ -21,7 +23,7 @@ public class Main {
     public static boolean checkIfAverageMoreZero(int[][] array, int num) {
         int sum = 0;
 
-        // проверить что num меньше, чем количество строк массива
+        // проверить, что num меньше, чем количество строк массива
         if (num > array.length - 1) {
             return false;
         }
@@ -33,7 +35,7 @@ public class Main {
         }
 
         // если больше 0 вернуть true / иначе false
-        return sum / array[num].length > 0;
+        return (float) sum / array[num].length > 0;
     }
 
     /**
@@ -49,10 +51,10 @@ public class Main {
             totalElements += inputArray[i].length;
         }
 
-        // создать одномерных массив с длинной = общему количеству элементов
+        // создать одномерный массив с длинной = общему количеству элементов
         int[] result = new int[totalElements];
 
-        // проходим по каждому элементу 2х мерного массива и добавляем его в нужный индекс
+        // проходим по каждому элементу двумерного массива и добавляем его в нужный индекс
         // одномерного массива
         int index = 0;
 
