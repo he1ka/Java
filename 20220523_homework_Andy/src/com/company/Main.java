@@ -1,21 +1,32 @@
 package com.company;
 
-import com.company.WebShop.Product;
+import com.company.WebShop.*;
 
 public class Main {
 
     public static void main(String[] args) {
         String[] student = {"Jack", "Nick"};
 
-        int[][] grades = {
-                {1, 2, 3, 2},
-                {2, 4, 5, 5, 1},
-        };
+        int[][] grades = {{1, 2, 3, 2}, {2, 4, 5, 5, 1},};
 
         printBestStudent(student, grades);
 
         // Task 2
         printBestStudentOopStyle();
+
+        // Task 3
+
+        Price productPrice = new Price(4555, Price.CURRENCY_EUR);
+
+        Product product1 = new Product("T-Shirt StarWar XS", "Super T-Shirt for all Ages (100% Cotton)", "Next", productPrice);
+
+        Customer johnDoe = new Customer("Doe", "John", "TelRun", "j.doe@gmail.com", "Berlin", "023299222");
+
+        Order order1 = new Order("I1211101", johnDoe, product1, 2, new Price(productPrice.getValue() * 2, Price.CURRENCY_EUR), Order.STATUS_ACTIVE);
+
+        Employee bobStuard = new Employee("Stuard", "Bob", "bob.stuard@gmail.com", "password123", "Manager");
+
+        Category tShirtCategory = new Category("T-Shirt");
     }
 
     /**
@@ -61,7 +72,7 @@ public class Main {
     /**
      * Task 2: Implement the previous task in OOP style. Create the Student class with name and grade fields.
      * Tip: grade should be an array.
-     *
+     * <p>
      * Реализуйте предыдущую задачу в стиле ООП. Создайте класс Student с полями имени и оценки.
      * Совет: оценка должна быть массивом.
      */
@@ -69,7 +80,7 @@ public class Main {
         Student jack = new Student("Jack", new int[]{1, 2, 3, 2});
         Student nick = new Student("Nick", new int[]{2, 4, 5, 5, 1});
 
-        Student[] students = new Student[]{jack,nick};
+        Student[] students = new Student[]{jack, nick};
 
         // Создаем сервис, который определит лучшего студента
         // Для работы передаем ему массив студентов
